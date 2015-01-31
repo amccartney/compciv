@@ -1,12 +1,6 @@
 #!/bin/bash
 
 bash tx-dr.sh
-bash fl-dr.sh
-bash ca-dr.sh
-
-#!/bin/bash
-
-bash tx-dr.sh
 texas=$(cat TX.txt)
 
 for line in $texas; do
