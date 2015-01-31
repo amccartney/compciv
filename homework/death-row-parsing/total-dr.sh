@@ -7,7 +7,7 @@ bash ca-dr.sh
 #!/bin/bash
 
 bash tx-dr.sh
-texas=`cat TX.txt`
+texas=$(cat TX.txt)
 
 for line in $texas; do
   echo TX,$line
