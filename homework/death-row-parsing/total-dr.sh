@@ -10,7 +10,7 @@ bash tx-dr.sh
 texas=`cat TX.txt`
 
 for line in $texas; do
-	echo TX,$line
+  echo TX,$line
 done
 
 bash fl-dr.sh
