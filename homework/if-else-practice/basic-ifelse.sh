@@ -35,15 +35,15 @@ if [[ "$#" -lt 1 ]]; then
   if [[ $1 -eq $3 ]]; then
     str_b="is equal to $3"
 
-  elif [[ $1 -lt $3 ]]; then
-    str_b="is less than $3"
+    elif [[ $1 -lt $3 ]]; then
+      str_b="is less than $3"
 
-  elif [[ $1 -gt $3 ]]; then
-    str_b="is greater than $3"
+    elif [[ $1 -gt $3 ]]; then
+      str_b="is greater than $3"
   fi
 
   echo "$1 $str_a and $str_b"
 
-elif [[ "$#" -gt 3 ]]; then
-  echo "You need fewer than $# arguments"
-fi
+  elif [[ "$#" -gt 3 ]]; then
+    echo "You need fewer than $# arguments"
+  fi
