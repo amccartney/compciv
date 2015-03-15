@@ -14,7 +14,7 @@ cat data-hold/menu-pages/*.html | \
   sed 's/amp;//' | \
   uniq > data-hold/rel-urls.txt
 
-rm -rf menu-pages
+rm -rf data-hold/menu-pages
 
 # curl each relative url and saves it into an html file with the press releases id number
 urls=$(cat data-hold/rel-urls.txt)
