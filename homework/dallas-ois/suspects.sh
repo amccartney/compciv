@@ -6,11 +6,11 @@ printf 'CASE NUM|DATE|SUSPECT KILLED|SUSPECT WEAPON|LAST NAME|FIRST NAME|RACE|GE
 
 cat tables/incidents.psv | while read x; do
 
-  officers=$(echo $x |csvfix order -f 7 -smq -sep '|' | \
+  suspects=$(echo $x |csvfix order -f 6 -smq -sep '|' | \
     sed -e 's/Jr. //g' | \
     tr ' ' '|' | tr '/' '|' | sed -e 's/,//g' | sed -e 's/"//g')
 
-  officer_split=$(echo $officers | sed "s/\/M/\/M#/g" | \
+  suspects_split=$(echo $suspects | sed "s/\/M/\/M#/g" | \
     sed "s/\/F/\/M#/g" | \
     grep -oE "[^#]+")
 
@@ -28,6 +28,6 @@ cat tables/incidents.psv | while read x; do
 
   suspect_weapon=$(echo $x | csvfix order -f 5 -smq -sep '|')
 
-  printf '%s|%s|%s|%s|%s\n' "$id" "$date" "$suspect_killed" "$suspect_weapon" "$officers"
-done
+  printf '%s|%s|%s|%s|%s\n' "$id" "$date" "$suspect_killed" "$suspect_weapon" "$suspects_split"
 
+done

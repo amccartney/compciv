@@ -40,28 +40,8 @@ csvfix join -f 1:1 tables/tmp_incidents.csv data-hold/pdfs/tmp_descriptions.csv 
   rm tables/tmp_incidents.csv
   rm data-hold/pdfs/tmp_descriptions.csv
 
-#makes the officer table
+# officers.sh makes the officer.psv table
+# suspects.sh does the same for suspects
 
-incidents=$(cat incidents.psv)
-
-for x in $incidents; do
-
-  officers=$(echo $x |csvfix order -f 7 -smq -sep '|' | \
-    sed -e 's/Jr. //g' | \
-    tr '  ' '|' | tr ' ' '|' | tr '/' '|' | sed -e 's/,//g' | sed -e 's/"//g')
-
-  id=$(echo $x | csvfix order -f 1 -smq -sep '|')
-
-  date=$(echo $x | csvfix order -f 2 -smq -sep '|')
-
-  suspect_status=$(echo $x | csvfix order -f 4 -smq -sep '|')
-
-  suspect_killed=$(if [[ $suspect_status -eq "Deceased" ]]; then
-      echo "TRUE"
-    else
-      echo "FALSE"
-    fi)
-
-  suspect_weapon=$(echo $x | csvfix order -f 5 -smq -sep '|')
 
 
